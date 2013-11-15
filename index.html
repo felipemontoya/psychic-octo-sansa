@@ -52,13 +52,19 @@
 
     queue()
         // .defer(d3.json, "src/world-50m.json")
-        .defer(d3.json, "src/us.json")
+      .defer(d3.json, "src/Test1_Grid.json")
+        //.defer(d3.json, "src/Test1_Grid.json")
         .await(ready);
 
     function ready(error, topology) {
+      console.log(topology)
          svg.append("g")  
           .selectAll("path")
             .data(topojson.feature(topology,topology.objects.counties).features)  //us
+            //.data(topojson.feature(topology,topology.objects.counties).features)  //us
+            //.data(topojson.feature(topology,topology.objects.twosquares).features)  //us
+            //.data(topojson.feature(topology,topology.objects.one-line).features)  //us
+           // .data(topojson.feature(topology,topology.objects.two-places).features)  //us
             // .data(topojson.feature(topology,topology.objects.countries).features) // world-50m
           .enter().append("path")
             .attr("class", "land")
